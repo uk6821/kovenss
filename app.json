@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Kovenss",
+    "slug": "Kovenss",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/img.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "id": "eas init --id 374d3122-6794-4ed6-b8ca-990de70fd768 "
+    },
+    "plugins": [
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow $(PRODUCT_NAME) to access your contacts."
+        }
+      ]
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.khanji112.Kovenss",
+      "version":"1.0.1"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d3337e09-9116-4a4f-9d42-3d77bcd1c703"
+      }
+    }
+  }
+}
