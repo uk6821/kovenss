@@ -491,33 +491,35 @@ export function Profiles({ navigation }) {
     return (
 
         <View style={{ paddingTop: 40, height: '100%', width: '100%', backgroundColor: '#6148B4', }}>
-            <View style={{ width: '100%', height: 70, marginTop: 20, marginLeft: 25, marginBottom: 30, }}>
+            <View style={{ width: '100%', height: 50, marginTop: 20, marginLeft: 25, marginBottom: 30,}}>
                 <TouchableOpacity style={{ width: 40, }} onPress={() => {
                     logoutaccount()
                 }}>
                     <Image style={{ height: 30, width: 30 }} source={require('../../assets/menu.png')}></Image>
                 </TouchableOpacity>
-                <Text style={{ marginTop: 20, fontSize: 25, fontWeight: '900', color: 'white' }}>Messages</Text>
+               
+                <Text style={{ marginTop: 15, fontSize: 25, fontWeight: '900', color: 'white' }}>Messages</Text>
 
+                <TouchableOpacity style={{ position: 'absolute', right: 80, top: 3 }} onLongPress={() => { changedp() }}>
 
-
-                {/* <TouchableOpacity style={{ position: 'absolute', right: 40, top: 5 }} onLongPress={() => { changedp() }}>
                     {profileimageurl == "" || profileimageurl == null || profileimageurl == undefined
                         ?
-                        <Image style={{ height: 50, width: 50, }} source={require('../../assets/img5.png')}></Image>
+                        <Image style={{ height: 50, width: 50 }} source={require('../../assets/img5.png')}></Image>
                         :
                         <Image style={{ height: 50, width: 50, borderRadius: 30 }} src={profileimageurl}></Image>}
-                </TouchableOpacity> */}
-                <TouchableOpacity style={{ position: 'absolute', right: 55, top: 3 }} onLongPress={() => { changedp() }}>
-
-                    {profileimageurl == "" || profileimageurl == null || profileimageurl == undefined
-                        ?
-                        <Image style={{ height: 60, width: 60 }} source={require('../../assets/img5.png')}></Image>
-                        :
-                        <Image style={{ height: 60, width: 60, borderRadius: 30 }} src={profileimageurl}></Image>}
 
                 </TouchableOpacity>
+                
+                <View style={{marginTop:-65,alignItems:'flex-end',marginRight:35,}}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate('Settings')
+                }}>
+                    <Image style={{height:35,width:35,tintColor:'white'}} source={require('../../assets/setting.png')}></Image>
+                    </TouchableOpacity>
+                </View>
+                
             </View>
+            
 
             <View style={{ borderColor: 'green', height: '90%', borderTopRightRadius: 40, overflow: 'hidden', borderTopLeftRadius: 40, backgroundColor: '#FFFFFF' }}>
                 <View style={{ flexDirection: 'row', height: 90, paddingRight: 15, alignItems: 'center', marginVertical: 5, marginLeft: 9, marginTop: 40, }}>
