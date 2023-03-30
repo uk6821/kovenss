@@ -10,6 +10,8 @@ import * as Contacts from 'expo-contacts';
 import { Swipeable } from 'react-native-gesture-handler';
 import Swipelist from 'react-native-swipeable-list-view';
 
+//yolo man
+
 
 let showname = ""
 let showimage = ""
