@@ -7,7 +7,6 @@ import { StatusBar } from 'expo-status-bar';
 import * as ImagePicker from 'expo-image-picker';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import * as Contacts from 'expo-contacts';
-import { Swipeable } from 'react-native-gesture-handler';
 import Swipelist from 'react-native-swipeable-list-view';
 
 
