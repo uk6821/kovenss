@@ -16,7 +16,7 @@ export function SettingScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <TouchableOpacity onPress={()=>{
+        <TouchableOpacity onPress={() => {
           navigation.navigate('Profiles')
         }}>
           <View style={styles.imgview1}>
@@ -46,16 +46,61 @@ export function SettingScreen({ navigation }) {
               Personal Info
             </Text>
           </View>
-          <View style={styles.imgview3}>
-            <TouchableOpacity>
+          <TouchableOpacity style={{ height: 40, width: 40, }}>
+            <View style={styles.imgview3}>
               <Image style={styles.img3}
                 source={require('../../assets/Forwordarrow.png')} ></Image>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.txtview4}>
+          <Text style={styles.settingtxt4}>
+            Settings
+          </Text>
+        </View>
+        <View style={styles.langview}>
+          <View style={styles.langimg}>
+            <Image style={styles.lanimg}
+              source={require('../../assets/Language.png')}>
+            </Image>
+          </View>
+          <View style={styles.lantxtview}>
+            <Text style={styles.lantxt}>
+              Language
+            </Text>
+          </View>
+          <View style={styles.Engtxtview}>
+            <Text style={styles.Engtxt}>
+              English
+            </Text>
+          </View>
+          <View style={styles.lanbtn}>
+            <TouchableOpacity style={{ height: 40, width: 40, }}>
+              <Image style={styles.lanbtnimg}
+                source={require('../../assets/Forwordarrow.png')} ></Image>
             </TouchableOpacity>
+          </View>
+
+        </View>
+        <View style={styles.notiview}>
+          <View style={styles.notiimgview}>
+            <Image style={styles.notiimg} source={require('../../assets/Notification.png')} ></Image>
+          </View>
+          <View style={styles.notitxtview}>
+            <Text style={styles.notitxt}>
+              Notifications
+            </Text>
+          </View>
+          <View style={styles.notibtn}>
+            <Image style={styles.notibtnimg} source={require('../../assets/Forwordarrow.png')}>
+
+            </Image>
           </View>
         </View>
       </View>
     </View>
   )
+
 
 }
 const styles = StyleSheet.create({
@@ -116,6 +161,7 @@ const styles = StyleSheet.create({
   },
   txtview3: {
     left: 20,
+
   },
   uktxt: {
     fontSize: 20,
@@ -138,6 +184,121 @@ const styles = StyleSheet.create({
     top: 13
   },
   img3: {
+    height: 30,
+    width: 30,
+  },
+  txtview4: {
+    width: 90,
+    top: 230,
+    left: 41,
+  },
+  settingtxt4: {
+    fontSize: 23,
+    fontWeight: 'bold',
+  },
+  langview: {
+    height: 60,
+    width: '80%',
+    top: 265,
+    left: 40,
+    flexDirection: 'row',
+  },
+  langimg: {
+    height: 47,
+    width: 47,
+    borderRadius: 25,
+    top: 5,
+    backgroundColor: '#FCECDB',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lanimg: {
+    height: 23,
+    width: 23,
+    tintColor: '#F69A38',
+  },
+  lantxtview: {
+    height: 50,
+    width: 120,
+    top: 4,
+    left: 15,
+  },
+  lantxt: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    left: 8,
+    top: 7
+  },
+  lanbtn: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    backgroundColor: '#ECE8E8',
+    justifyContent: 'center',
+    borderRadius: 13,
+    left: 65,
+    top: 8
+  },
+  lanbtnimg: {
+    height: 30,
+    width: 30,
+    left: 4,
+    top: 4,
+  },
+  Engtxtview: {
+    height: 30,
+    width: 60,
+    left: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 12,
+  },
+  Engtxt: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#A29F9F'
+  },
+  notiview: {
+    height: 50,
+    width: '80%',
+    flexDirection: 'row',
+    left: 41,
+    top: 285,
+  },
+  notiimgview: {
+    height: 47,
+    width: 47,
+    borderRadius: 25,
+    backgroundColor: '#daf0ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  notiimg: {
+    height: 28,
+    width: 28,
+    tintColor: '#0D90E8'
+  },
+  notitxtview: {
+    height: 30,
+    width: 135,
+    left: 19,
+    top: 9,
+  },
+  notitxt: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  notibtn: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    backgroundColor: '#ECE8E8',
+    justifyContent: 'center',
+    borderRadius: 13,
+    left: 109,
+    top: 4
+  },
+  notibtnimg:{
     height: 30,
     width: 30,
   },
