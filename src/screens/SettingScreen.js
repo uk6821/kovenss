@@ -1,10 +1,10 @@
-
+import React from 'react';
+import { useState, } from 'react';
 import {
   Button, View, Text, StyleSheet, Image,
   TextInput, TouchableOpacity,
-  KeyboardAvoidingView, StatusBar
+  KeyboardAvoidingView, StatusBar, Switch
 } from 'react-native';
-
 
 
 
@@ -13,6 +13,7 @@ import {
 
 export function SettingScreen({ navigation }) {
 
+  const [checked, setchecked] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -46,12 +47,16 @@ export function SettingScreen({ navigation }) {
               Personal Info
             </Text>
           </View>
-          <TouchableOpacity style={{ height: 40, width: 40, }}>
+          
             <View style={styles.imgview3}>
+            <TouchableOpacity style={{ height: 40, width: 40,}} onPress={()=>{
+            navigation.navigate('Accounts')
+          }}>
               <Image style={styles.img3}
                 source={require('../../assets/Forwordarrow.png')} ></Image>
+                </TouchableOpacity>
             </View>
-          </TouchableOpacity>
+          
         </View>
         <View style={styles.txtview4}>
           <Text style={styles.settingtxt4}>
@@ -95,6 +100,23 @@ export function SettingScreen({ navigation }) {
             <Image style={styles.notibtnimg} source={require('../../assets/Forwordarrow.png')}>
 
             </Image>
+          </View>
+        </View>
+        <View style={styles.toggleview}>
+          <View style={styles.darkview}>
+              <Image style={styles.darkimg}
+               source={require('../../assets/Darkmode.png')}></Image>
+          </View>
+          <View style={styles.darktxtview}>
+          <Text style={styles.darktxt}>
+              Darkmode
+          </Text>
+          </View>
+          <View style={styles.toggle}>
+            <Switch
+              value={checked}
+              onValueChange={() => setchecked(!checked)}
+            />
           </View>
         </View>
       </View>
@@ -186,6 +208,8 @@ const styles = StyleSheet.create({
   img3: {
     height: 30,
     width: 30,
+    alignSelf:'center',
+    top:4
   },
   txtview4: {
     width: 90,
@@ -298,8 +322,41 @@ const styles = StyleSheet.create({
     left: 109,
     top: 4
   },
-  notibtnimg:{
+  notibtnimg: {
     height: 30,
     width: 30,
   },
+  toggleview: {
+    flexDirection: 'row',
+    top: 310,
+  },
+  toggle: {
+    width: 50,
+    left: 170,
+  },
+  darkview: {
+    height: 47,
+    width: 47,
+    borderRadius: 25,
+    left: 41,
+    backgroundColor: '#F7E9F9',
+    alignContent:'center',
+    justifyContent:'center',
+  },
+  darkimg:{
+    height:30,
+    width:30,
+    alignSelf:'center',
+    tintColor:'#771984'
+  },
+  darktxtview:{
+    height:30,
+    left:59,
+    top:9,
+  },
+  darktxt:{
+    fontSize:24,
+    fontWeight:'bold',
+  },
+
 })
