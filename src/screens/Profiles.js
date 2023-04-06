@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { Modal, Button, View, Text, TextInput, Image, TouchableOpacity, Alert, StyleSheet, FlatList, ScrollView, Touchable, ActivityIndicator } from 'react-native';
 import { setDoc, getFirestore, collection, addDoc, getDocs, onSnapshot, orderBy, query, serverTimestamp, updateDoc, doc } from "firebase/firestore";
 import app from '../config/config';
@@ -9,6 +9,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } f
 import * as Contacts from 'expo-contacts';
 import Swipelist from 'react-native-swipeable-list-view';
 
+import { ThemeContext } from '../store/context/ThemeContext';
 //umer work
 
 let showname = ""
@@ -22,7 +23,7 @@ export function Profiles({ navigation }) {
     const storage = getStorage(app);
     const db = getFirestore(app);
 
-
+    const { state } = useContext(ThemeContext)
     const [modalVisible1, setModalVisible1] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
     const [contacts, setContacts] = useState([])
@@ -491,13 +492,13 @@ export function Profiles({ navigation }) {
     return (
 
         <View style={{ paddingTop: 40, height: '100%', width: '100%', backgroundColor: '#6148B4', }}>
-            <View style={{ width: '100%', height: 50, marginTop: 20, marginLeft: 25, marginBottom: 30,}}>
+            <View style={{ width: '100%', height: 50, marginTop: 20, marginLeft: 25, marginBottom: 30, }}>
                 <TouchableOpacity style={{ width: 40, }} onPress={() => {
                     logoutaccount()
                 }}>
                     <Image style={{ height: 30, width: 30 }} source={require('../../assets/menu.png')}></Image>
                 </TouchableOpacity>
-               
+
                 <Text style={{ marginTop: 15, fontSize: 25, fontWeight: '900', color: 'white' }}>Messages</Text>
 
                 <TouchableOpacity style={{ position: 'absolute', right: 80, top: 3 }} onLongPress={() => { changedp() }}>
@@ -509,19 +510,19 @@ export function Profiles({ navigation }) {
                         <Image style={{ height: 50, width: 50, borderRadius: 30 }} src={profileimageurl}></Image>}
 
                 </TouchableOpacity>
-                
-                <View style={{marginTop:-65,alignItems:'flex-end',marginRight:35,}}>
-                <TouchableOpacity onPress={()=>{
-                    navigation.navigate('Settings')
-                }}>
-                    <Image style={{height:35,width:35,tintColor:'white'}} source={require('../../assets/setting.png')}></Image>
+
+                <View style={{ marginTop: -65, alignItems: 'flex-end', marginRight: 35, }}>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Settings')
+                    }}>
+                        <Image style={{ height: 35, width: 35, tintColor: 'white' }} source={require('../../assets/setting.png')}></Image>
                     </TouchableOpacity>
                 </View>
-                
-            </View>
-            
 
-            <View style={{ borderColor: 'green', height: '90%', borderTopRightRadius: 40, overflow: 'hidden', borderTopLeftRadius: 40, backgroundColor: '#FFFFFF' }}>
+            </View>
+
+
+            <View style={{ borderColor: 'green', height: '90%', borderTopRightRadius: 40, overflow: 'hidden', borderTopLeftRadius: 40, backgroundColor: state.value.bgcolor }}>
                 <View style={{ flexDirection: 'row', height: 90, paddingRight: 15, alignItems: 'center', marginVertical: 5, marginLeft: 9, marginTop: 40, }}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ flexDirection: 'row', }}>
                         <TouchableOpacity >
@@ -542,7 +543,7 @@ export function Profiles({ navigation }) {
                     </ScrollView>
                 </View>
                 <View style={{ width: 130, marginLeft: 35, marginTop: 20, }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 23, }}>Recent Chat</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 23, color: state.value.txtcolor}}>Recent Chat</Text>
                 </View>
 
                 <Swipelist style={{ marginTop: 20, }}

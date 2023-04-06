@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { Button, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { Button, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import { CustomButton } from '../Components/CustomButton'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../config/config'
@@ -18,6 +18,15 @@ export function LoginScreen({ navigation }) {
   const { state, toggleTheme } = useContext(ThemeContext)
   const [Email, setEmail] = useState("")
   const [Password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  const CustomActivityIndicator = () => {
+    return (
+      <View style={{ flex: 1, position: 'absolute', justifyContent: 'center', backgroundColor: '#555555DD', left: 0, top: 0, bottom: 0, right: 0 }}>
+        <ActivityIndicator color="#FFA600" size="large" />
+      </View>
+    );
+  };
 
   const fetchcolor = async () => {
     try {
@@ -53,6 +62,7 @@ export function LoginScreen({ navigation }) {
         const user = userCredential.user;
         setEmail("")
         setPassword("")
+        setLoading(false)
         navigation.navigate('Profiles', { key: user.email })
 
         // ...
@@ -62,6 +72,7 @@ export function LoginScreen({ navigation }) {
         const errorMessage = error.message;
         setPassword("")
         setEmail("")
+        setLoading(false)
         alert(errorMessage)
       });
   }
@@ -115,6 +126,7 @@ export function LoginScreen({ navigation }) {
           <CustomButton
             title='Login'
             onCustomButtonPressed={() => {
+              setLoading(true)
               signinaccount()
               console.log('Login pressed')
             }}></CustomButton>
@@ -128,6 +140,7 @@ export function LoginScreen({ navigation }) {
       <View style={{
         height: 350, width: 340, borderRadius: 450, backgroundColor: '#00535354', top: -30, marginLeft: 300,
       }} />
+      {loading ? CustomActivityIndicator() : null}
     </View>
 
   );
